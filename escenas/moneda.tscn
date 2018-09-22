@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/coin.png" type="Texture" id=1]
+[ext_resource path="res://scripts/moneda.gd" type="Script" id=2]
+
+[node name="moneda" type="Sprite"]
+
+show_behind_parent = true
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+

@@ -1,0 +1,155 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://fuentes/grapeSoda64.tres" type="DynamicFont" id=1]
+[ext_resource path="res://escenas/fadeInFadeOut.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/intro.gd" type="Script" id=3]
+[ext_resource path="res://escenas/juego.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "clic"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/Label2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "inicio"
+length = 6.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/Label:visible_characters")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 0, 95 ]
+}
+
+[node name="CenterContainer" type="CenterContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+use_top_left = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 112.0
+margin_top = 36.0
+margin_right = 912.0
+margin_bottom = 539.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Label" type="Label" parent="VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 800.0
+margin_bottom = 399.0
+rect_min_size = Vector2( 800, 350 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 1 )
+text = "You just robbed a bank
+and the police are chasing you...
+ESCAPE THE POLICE!
+(Do not crash or you will lose the loot)"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 0.989583
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Material", "Rect", "Visibility", "custom_fonts" ]
+
+[node name="Label2" type="Label" parent="VBoxContainer" index="1"]
+
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 403.0
+margin_right = 800.0
+margin_bottom = 503.0
+rect_min_size = Vector2( 100, 100 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.96875, 1, 0, 1 )
+text = "Click or press Space to start"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = -0.047619
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_fonts" ]
+
+[node name="fadeInFadeOut" parent="." index="1" instance=ExtResource( 2 )]
+
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="anim" type="AnimationPlayer" parent="." index="2"]
+
+root_node = NodePath("..")
+autoplay = "inicio"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/clic = SubResource( 1 )
+anims/inicio = SubResource( 2 )
+blend_times = [  ]
+script = ExtResource( 3 )
+juego = ExtResource( 4 )
+
+[connection signal="animation_finished" from="fadeInFadeOut" to="anim" method="_on_fadeInFadeOut_animation_finished"]
+
+[connection signal="animation_finished" from="anim" to="anim" method="_on_anim_animation_finished"]
+
+

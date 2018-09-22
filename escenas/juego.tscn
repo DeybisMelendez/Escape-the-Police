@@ -1,0 +1,813 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scripts/juego.gd" type="Script" id=1]
+[ext_resource path="res://escenas/carro.tscn" type="PackedScene" id=2]
+[ext_resource path="res://escenas/jugador.tscn" type="PackedScene" id=3]
+[ext_resource path="res://escenas/policia.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/carro2.png" type="Texture" id=5]
+[ext_resource path="res://fuentes/grapeSoda140.tres" type="DynamicFont" id=6]
+[ext_resource path="res://scripts/backgroundScroll.gd" type="Script" id=7]
+[ext_resource path="res://escenas/topMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/tileset/tileset.res" type="TileSet" id=9]
+[ext_resource path="res://escenas/fadeInFadeOut.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sonidos/sirena.wav" type="AudioStream" id=11]
+[ext_resource path="res://sonidos/explosion.wav" type="AudioStream" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 512, 32 )
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "inicio"
+length = 3.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("policia:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.8, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -32 ), Vector2( -16, -32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("policia2:offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -32 ), Vector2( -16, -32 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("policia3:offset")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.8, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -32 ), Vector2( -16, -32 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("policia4:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -32 ), Vector2( -16, -32 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("policia5:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.8, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -32 ), Vector2( -16, -32 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("policia6:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -32 ), Vector2( -16, -32 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "final1"
+length = 5.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 512, 288 ), Vector2( 512, 288 ), Vector2( -512, 288 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("carretera/jugSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -512, 320 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("carretera/policias/policia:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1408, 261 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("carretera/policias/policia:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 30.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("carretera/policias/policia2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1584, 256 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("carretera/policias/policia3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1408, 351 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("carretera/policias/policia4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1435, 440 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("carretera/policias/policia4:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -30.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("carretera/policias/policia5:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1536, 448 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("carretera/policias/policia6:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1280, 384 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("carretera/policias:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2048, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("wasted:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("AudioStreamPlayer2:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("AudioStreamPlayer:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -40.0, -10.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "final2"
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=4]
+
+length = 8.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("carretera/policias:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2048, 0 ), Vector2( -3072, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("carretera/jugSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1216, 320 ), Vector2( 256, 320 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("carretera/policias/policia:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2944, 197 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("carretera/policias/policia2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2980, 256 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("carretera/policias/policia3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3005, 320 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("carretera/policias/policia4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2996, 383 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("carretera/policias/policia5:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2995, 448 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("carretera/policias/policia6:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3008, 512 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("carretera/policias/policia:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("carretera/policias/policia4:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("AudioStreamPlayer:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 6, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -10.0, -10.0, -40.0 ]
+}
+
+[node name="juego" type="Node2D" index="0"]
+
+pause_mode = 2
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause", "Transform" ]
+carro = ExtResource( 2 )
+jugador = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="0"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Pause" ]
+
+[node name="arriba" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+
+position = Vector2( 512, 96 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="arriba2" type="CollisionShape2D" parent="StaticBody2D" index="1"]
+
+position = Vector2( 512, 544 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="carretera" type="YSort" parent="." index="1"]
+
+pause_mode = 1
+editor/display_folded = true
+sort_enabled = true
+_sections_unfolded = [ "Pause", "Transform", "Z Index" ]
+
+[node name="spawn" type="Node" parent="carretera" index="0"]
+
+editor/display_folded = true
+
+[node name="0" type="Position2D" parent="carretera/spawn" index="0"]
+
+position = Vector2( 1088, 160 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="1" type="Position2D" parent="carretera/spawn" index="1"]
+
+position = Vector2( 1088, 224 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="2" type="Position2D" parent="carretera/spawn" index="2"]
+
+position = Vector2( 1088, 288 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="3" type="Position2D" parent="carretera/spawn" index="3"]
+
+position = Vector2( 1088, 352 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="4" type="Position2D" parent="carretera/spawn" index="4"]
+
+position = Vector2( 1088, 416 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="5" type="Position2D" parent="carretera/spawn" index="5"]
+
+position = Vector2( 1088, 480 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="policias" type="Node2D" parent="carretera" index="1"]
+
+position = Vector2( -2048, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="policia" parent="carretera/policias" index="0" instance=ExtResource( 4 )]
+
+position = Vector2( 1408, 261 )
+rotation = 0.523599
+scale = Vector2( 1, 1 )
+offset = Vector2( 9.53674e-07, -32 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="policia2" parent="carretera/policias" index="1" instance=ExtResource( 4 )]
+
+position = Vector2( 1584, 256 )
+scale = Vector2( 1, 1 )
+offset = Vector2( -16, -32 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="policia3" parent="carretera/policias" index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 1408, 351 )
+scale = Vector2( 1, 1 )
+offset = Vector2( 9.53674e-07, -32 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="policia4" parent="carretera/policias" index="3" instance=ExtResource( 4 )]
+
+position = Vector2( 1435, 440 )
+rotation = -0.523599
+scale = Vector2( 1, 1 )
+offset = Vector2( -16, -32 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="policia5" parent="carretera/policias" index="4" instance=ExtResource( 4 )]
+
+position = Vector2( 1536, 448 )
+scale = Vector2( 1, 1 )
+offset = Vector2( 9.53674e-07, -32 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="policia6" parent="carretera/policias" index="5" instance=ExtResource( 4 )]
+
+position = Vector2( 1280, 384 )
+scale = Vector2( 1, 1 )
+offset = Vector2( -16, -32 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="anim" type="AnimationPlayer" parent="carretera/policias" index="6"]
+
+root_node = NodePath("..")
+autoplay = "inicio"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/inicio = SubResource( 2 )
+blend_times = [  ]
+
+[node name="jugSprite" type="Sprite" parent="carretera" index="2"]
+
+position = Vector2( -512, 320 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="wasted" type="Label" parent="." index="2"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -716.0
+margin_top = 117.0
+margin_right = -116.0
+margin_bottom = 267.0
+rect_min_size = Vector2( 600, 150 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 4
+text = "WASTED"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Pause", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="anim" type="AnimationPlayer" parent="." index="3"]
+
+root_node = NodePath("..")
+autoplay = "inicio"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/final1 = SubResource( 5 )
+anims/final2 = SubResource( 6 )
+anims/inicio = SubResource( 4 )
+blend_times = [  ]
+_sections_unfolded = [ "Pause" ]
+
+[node name="spawner" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+_sections_unfolded = [ "Pause" ]
+
+[node name="spawner2" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
+_sections_unfolded = [ "Pause" ]
+
+[node name="youEscaped" type="Label" parent="." index="6"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 64.0
+margin_top = 129.0
+margin_right = 861.0
+margin_bottom = 279.0
+rect_min_size = Vector2( 832, 150 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 4
+text = "YOU ESCAPED!"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Pause", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="ganarMenu" type="Control" parent="." index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Pause" ]
+
+[node name="Camera2D" type="Camera2D" parent="." index="8"]
+
+position = Vector2( -512, 288 )
+anchor_mode = 1
+rotating = false
+current = false
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Pause", "Smoothing", "Transform" ]
+
+[node name="finJuego" type="Timer" parent="." index="9"]
+
+pause_mode = 2
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = false
+_sections_unfolded = [ "Pause" ]
+
+[node name="bg" type="ParallaxBackground" parent="." index="10"]
+
+pause_mode = 1
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = true
+script = ExtResource( 7 )
+_sections_unfolded = [ "Pause", "Scroll" ]
+velocidadBackground = 350
+
+[node name="topMenu" parent="bg" index="0" instance=ExtResource( 8 )]
+
+[node name="parallax" type="ParallaxLayer" parent="bg" index="1"]
+
+editor/display_folded = true
+motion_scale = Vector2( 1, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="tilemap" type="TileMap" parent="bg/parallax" index="0"]
+
+position = Vector2( 0, 64 )
+mode = 0
+tile_set = ExtResource( 9 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 131072, 2, 0, 131073, 2, 0, 131074, 2, 0, 131075, 2, 0, 131076, 2, 0, 131077, 2, 0, 131078, 2, 0, 131079, 2, 0, 131080, 2, 0, 131081, 2, 0, 131082, 2, 0, 131083, 2, 0, 131084, 2, 0, 131085, 2, 0, 131086, 2, 0, 131087, 2, 0, 196608, 3, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196612, 3, 0, 196613, 3, 0, 196614, 3, 0, 196615, 3, 0, 196616, 3, 0, 196617, 3, 0, 196618, 3, 0, 196619, 3, 0, 196620, 3, 0, 196621, 3, 0, 196622, 3, 0, 196623, 3, 0, 262144, 4, 0, 262145, 4, 0, 262146, 4, 0, 262147, 4, 0, 262148, 4, 0, 262149, 4, 0, 262150, 4, 0, 262151, 4, 0, 262152, 4, 0, 262153, 4, 0, 262154, 4, 0, 262155, 4, 0, 262156, 4, 0, 262157, 4, 0, 262158, 4, 0, 262159, 4, 0, 327680, 2, 0, 327681, 2, 0, 327682, 2, 0, 327683, 2, 0, 327684, 2, 0, 327685, 2, 0, 327686, 2, 0, 327687, 2, 0, 327688, 2, 0, 327689, 2, 0, 327690, 2, 0, 327691, 2, 0, 327692, 2, 0, 327693, 2, 0, 327694, 2, 0, 327695, 2, 0, 393216, 2, 0, 393217, 2, 0, 393218, 2, 0, 393219, 2, 0, 393220, 2, 0, 393221, 2, 0, 393222, 2, 0, 393223, 2, 0, 393224, 2, 0, 393225, 2, 0, 393226, 2, 0, 393227, 2, 0, 393228, 2, 0, 393229, 2, 0, 393230, 2, 0, 393231, 2, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="aumentoDificultad" type="Timer" parent="." index="11"]
+
+process_mode = 0
+wait_time = 30.0
+one_shot = false
+autostart = false
+_sections_unfolded = [ "Pause" ]
+
+[node name="fadeInFadeOut" parent="." index="12" instance=ExtResource( 10 )]
+
+_sections_unfolded = [ "Pause" ]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="13"]
+
+stream = ExtResource( 11 )
+volume_db = -10.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+_sections_unfolded = [ "Pause" ]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." index="14"]
+
+stream = ExtResource( 12 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+_sections_unfolded = [ "Pause" ]
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+
+[connection signal="timeout" from="spawner" to="." method="_on_spawner_timeout"]
+
+[connection signal="timeout" from="spawner2" to="." method="_on_spawner2_timeout"]
+
+[connection signal="timeout" from="finJuego" to="." method="_on_finJuego_timeout"]
+
+[connection signal="timeout" from="aumentoDificultad" to="." method="_on_aumentoDificultad_timeout"]
+
+
