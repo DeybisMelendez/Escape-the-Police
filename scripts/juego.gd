@@ -15,6 +15,7 @@ func _ready():
 	autoload.tiempo = 300
 	autoload.final1 = false
 	autoload.final2 = false
+	randomize()
 
 #func _input(event):
 #	if Input.is_action_pressed("pausa"):

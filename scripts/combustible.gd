@@ -12,4 +12,5 @@ func _physics_process(delta):
 func _on_combustible_body_entered(body):
 	if body.is_in_group("jugador"):
 		autoload.combustible = 100
+		autoload.get_node("combustible").play()
 		queue_free()

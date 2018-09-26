@@ -97,7 +97,7 @@ tracks/5/keys = {
 "values": [ Vector2( 16, -32 ), Vector2( -16, -32 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 
 resource_name = "final1"
 length = 5.0
@@ -284,14 +284,14 @@ tracks/14/keys = {
 "values": [ -40.0, -10.0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 
 resource_name = "final2"
 length = 1.0
 loop = false
 step = 0.1
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
 length = 8.0
 loop = false
@@ -615,9 +615,9 @@ autoplay = "inicio"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/final1 = SubResource( 5 )
-anims/final2 = SubResource( 6 )
-anims/inicio = SubResource( 4 )
+anims/final1 = SubResource( 3 )
+anims/final2 = SubResource( 4 )
+anims/inicio = SubResource( 5 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 

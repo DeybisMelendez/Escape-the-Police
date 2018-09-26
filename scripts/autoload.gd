@@ -37,4 +37,5 @@ func _on_tiempo_timeout():
 	if combustible > 0 and !final1 and !final2:
 		if tiempo > 0:
 			tiempo -= 1
-			
+	combustible -= 1
+	combustible = clamp(autoload.combustible,0,100)

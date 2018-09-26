@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/autoload.gd" type="Script" id=1]
-[ext_resource path="res://sonidos/pausa.wav" type="AudioStream" id=2]
+[ext_resource path="res://sonidos/combustible.wav" type="AudioStream" id=2]
 [ext_resource path="res://sonidos/explosion.wav" type="AudioStream" id=3]
 [ext_resource path="res://sonidos/Long Away Home.wav" type="AudioStream" id=4]
 [ext_resource path="res://sonidos/coin.wav" type="AudioStream" id=5]
@@ -19,7 +19,7 @@ one_shot = false
 autostart = false
 _sections_unfolded = [ "Pause" ]
 
-[node name="pausa" type="AudioStreamPlayer" parent="." index="1"]
+[node name="combustible" type="AudioStreamPlayer" parent="." index="1"]
 
 pause_mode = 2
 stream = ExtResource( 2 )

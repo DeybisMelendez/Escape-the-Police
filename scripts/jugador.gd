@@ -32,7 +32,7 @@ func _physics_process(delta):
 			movimiento.x = 0
 		colision()
 		limite()
-		combustible()
+#		combustible()
 	else:
 		movimiento = Vector2(-300,0)
 	if autoload.tiempo < 1:
@@ -55,9 +55,9 @@ func limite():
 	if global_position.x > 960:
 		global_position.x = 960
 
-func combustible():
-	if autoload.combustible > 0:
-		autoload.combustible -= get_physics_process_delta_time() * 2
+#func combustible():
+#	autoload.combustible -= get_physics_process_delta_time() * 2
+#	autoload.combustible = clamp(autoload.combustible,0,100)
 
 func _on_tirarMoneda_timeout():
 	autoload.get_node("coin").play()

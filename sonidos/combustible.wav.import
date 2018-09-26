@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/pausa.wav-e747f30df5893547f246e9d4ed329848.sample"
+path="res://.import/combustible.wav-612599984b471318aa31f8bce35a24c8.sample"
 
 [deps]
 
-source_file="res://sonidos/pausa.wav"
-dest_files=[ "res://.import/pausa.wav-e747f30df5893547f246e9d4ed329848.sample" ]
+source_file="res://sonidos/combustible.wav"
+dest_files=[ "res://.import/combustible.wav-612599984b471318aa31f8bce35a24c8.sample" ]
 
 [params]
 
